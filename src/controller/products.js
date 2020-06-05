@@ -1,11 +1,13 @@
-const {User,Products}=require('../db/model')
+const { Op } = require("sequelize");
 
-async function createNewProduct(userId,prodName,manufacturer,price){
+const {Products}=require('../db/model')
+
+async function createNewProduct(prodName,manufacturer,price,description){
     const product=await Products.create({
-        userId,
         prodName,
         manufacturer,
         price,
+        description
         
     })
     return product
@@ -18,21 +20,40 @@ async function showAllProducts(){
     return product
 }
 
-async function showCartProducts(userId){
+// async function showCartProducts(userId){
+//     const product=await Products.findAll({
+//         include:[{model:User,
+//         where:{id:userId}}]
+//     })
+//     return product
+// }
+
+async function showProductByName(name){
     const product=await Products.findAll({
-        include:[{model:User,
-        where:{id:userId}}]
+        where:{[Op.or]:[
+            {prodName:name},
+        {manufacturer:name}]
+        }
     })
     return product
 }
 
+// async function showProductByName(prodName){
+//     const product=await Products.findAll({
+//         where:{prodName}
+//     })
+//     product
+// }
+
+
 module.exports={
     createNewProduct,
     showAllProducts,
-    showCartProducts
+    //showCartProducts,
+    showProductByName
 }
 
-async function task(){
+//async function task(){
     // await createNewProduct(
     //     '1',
     //     'Iphone',
@@ -50,11 +71,11 @@ async function task(){
     //     'Much better then iphone'
     // )
 
-    const products=await showCartProducts('1')
-    for(let p of products){
-        //console.log(`${p.proName}`)
-        console.log(`id:${p.id}\nNAme: ${p.prodName}\n Manuf.${p.manufacturer}:\n Price: ${p.price}\n `)
-    }
+//     const products=await showProductByName('Google')
+//     for(let p of products){
+//         //console.log(`${p.proName}`)
+//         console.log(`id:${p.id}\nNAme: ${p.prodName}\n Manuf.${p.manufacturer}:\n Price: ${p.price}\n `)
+//     }
 
-}task()
-.catch((err)=>{console.log(err)})
+// }task()
+// .catch((err)=>{console.log(err)})

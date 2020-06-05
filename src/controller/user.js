@@ -23,19 +23,19 @@ module.exports={
     findUserByName
 }
 
-async function task(){
-    await createUser(
+// async function task(){
+//     await createUser(
         
-        'Nancy'
-    )
+//         'Nancy'
+//     )
     
-    await createUser(
+//     await createUser(
 
-        'Janeyyyyyy'
-    )
-    console.log( await findUserById('2'))
-    console.log( await findUserByName('Janeyyyyyy'))
-    }task()
-    .catch((err)=>{
-        console.log(err)
-    })
+//         'Janeyyyyyy'
+//     )
+//     console.log( await findUserById('2'))
+//     console.log( await findUserByName('Janeyyyyyy'))
+//     }task()
+//     .catch((err)=>{
+//         console.log(err)
+//     })

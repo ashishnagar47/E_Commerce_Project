@@ -37,8 +37,8 @@ const Products=db.define('product',{
     description:{type:Sequelize.DataTypes.TEXT}
     })
 
-User.hasMany(Products)
-Products.belongsTo(User)
+// User.hasMany(Products)
+// Products.belongsTo(User)
 
 // db.sync()
 //     .then(()=>{console.log('database has been synced')})

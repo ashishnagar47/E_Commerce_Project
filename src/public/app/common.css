@@ -1,0 +1,21 @@
+#footer{
+    position:sticky;
+    padding-top: 0.5px;
+    padding-bottom:0.5px;
+    padding: 1rem;
+    bottom: 0px;
+    background-color: rgb(236, 202, 236);
+    z-index: 2;
+}
+
+#content{
+    height:2000px ;
+    z-index: 1;
+}
+
+#navbar{
+    position:sticky;
+    top:0px;
+    padding:1.5px;
+    z-index:3
+}
