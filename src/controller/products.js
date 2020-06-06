@@ -2,13 +2,13 @@ const { Op } = require("sequelize");
 
 const {Products}=require('../db/model')
 
-async function createNewProduct(prodName,manufacturer,price,description){
+async function createNewProduct(prodName,manufacturer,price,description,picture){
     const product=await Products.create({
         prodName,
         manufacturer,
         price,
-        description
-        
+        description,
+        picture
     })
     return product
 }

@@ -34,7 +34,8 @@ const Products=db.define('product',{
     prodName:COL_NAME_DEF,
     manufacturer:MANUF,
     price:{type:Sequelize.DataTypes.FLOAT},
-    description:{type:Sequelize.DataTypes.TEXT}
+    description:{type:Sequelize.DataTypes.TEXT},
+    picture:{type:Sequelize.DataTypes.STRING}
     })
 
 // User.hasMany(Products)

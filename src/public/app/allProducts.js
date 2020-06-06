@@ -4,9 +4,9 @@ function loadProducts(){
             $('#product-container').append(
                 $(`
                 <div class="m-4">
-                    <!--<div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">-->
+                    <div class="card" style="width: 18rem;">
+                    <!--<img src="${p.picture}" class="card-img-top" alt="...">-->
+                    <div class="card-body">
                     <h5 class="card-title text-center">${p.prodName}</h5>
                     <h5 class="card-title">Manufacturer:  ${p.manufacturer}</h5>
                     <h5 class="card-title">Rs: ${p.price}</h5>
