@@ -1,29 +1,29 @@
 <div class="container my-2">
     <h1>Sell Your Product Here</h2>
 
-<form enctype="multipart/form-data">
+<form id="myForm"  enctype="multipart/form-data">
 
         <div class="col-md-6 mb-3">
             <label for="validationDefault01">Product name</label>
-            <input type="text" class="form-control" id="productName" value="" required>
+            <input type="text" class="form-control" id="prodName" name="prodName"  required>
         </div>
       <div class="col-md-6 mb-3">
         <label for="validationDefault03">Manufacturer</label>
-        <input type="text" class="form-control" id="Manufacturer" required>
+        <input type="text" class="form-control" id="manufacturer" name="manufacturer" required>
       </div>
       <div class="col-md-6 mb-3">
         <label for="validationDefault03">Price</label>
-        <input type="number" class="form-control" id="Price" required>
+        <input type="number" class="form-control" id="price" name="price" required>
       </div>
       <div class="col-md-6 mb-6">
         <label for="validationDefault03">Description</label>
-        <input type="text" style="width: 1000px; height:150px;" class="form-control" id="Description" required>
+        <input type="text" style="width: 1000px; height:150px;" class="form-control" id="description" name='description' required>
       </div>
       <div class="col-md-6 mb-3">
         <br>
         <label for="">Upload Picture</label>
         <br>
-        <input type="file" name="ProductPic" id="productPic"  placeholder="Picture" >
+        <input type="file" name="picture" id="picture"  placeholder="Picture" >
       </div>
 
     <button class="btn btn-primary m-4" type="submit" id="submit">Submit</button>

@@ -12,8 +12,9 @@ const{prodRoute}=require('./src/routes/products')
 
 
 app.use('/api/users',userRoute)
-app.use('/api/products',prodRoute)
 app.use('/images',express.static(__dirname+'/images'))
+app.use('/api/products',prodRoute)
+
 app.use('/',express.static(__dirname+'/src/public'))
 
 
