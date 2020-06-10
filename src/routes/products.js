@@ -26,7 +26,7 @@ route.post('/',upload.single('picture'),async(req,res)=>{
         await fs.rename(oldPath,newPath)
 
         const{prodName,manufacturer,price,description}=req.body
-        const picture='/images'+'ProductPic_'+req.body.prodName+'.'+req.file.mimetype.split('/').pop()
+        const picture='/images/'+'ProductPic_'+req.body.prodName+'.'+req.file.mimetype.split('/').pop()
        // const picture=newPath
         if((!prodName)||(!manufacturer)){
             res.status(400).send({
