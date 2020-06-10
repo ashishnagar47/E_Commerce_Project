@@ -18,7 +18,7 @@ app.use('/api/products',prodRoute)
 app.use('/',express.static(__dirname+'/src/public'))
 
 
-db.sync({force:true})
+db.sync()
     .then(()=>{
         app.listen(4444,()=>{
             console.log('server started on http://localhost:4444');
