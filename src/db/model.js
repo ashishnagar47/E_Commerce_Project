@@ -38,6 +38,15 @@ const Products=db.define('product',{
     picture:{type:Sequelize.DataTypes.STRING}
     })
 
+const CartProducts=db.define('cart',{
+    id:COL_ID_DEF,
+    cProdName:COL_NAME_DEF,
+    manufacturer:MANUF,
+    price:{type:Sequelize.DataTypes.FLOAT},
+    description:{type:Sequelize.DataTypes.TEXT},
+    picture:{type:Sequelize.DataTypes.STRING}
+})
+
 // User.hasMany(Products)
 // Products.belongsTo(User)
 
@@ -46,5 +55,5 @@ const Products=db.define('product',{
 //     .catch((err)=>{console.log('err')})
 
 module.exports={
-   db, User,Products
+   db, User,Products,CartProducts
 }

@@ -1,6 +1,7 @@
 const { Op } = require("sequelize");
 
 const {Products}=require('../db/model')
+const{CartProducts}=require('../db/model')
 
 async function createNewProduct(prodName,manufacturer,price,description,picture){
     const product=await Products.create({
@@ -20,11 +21,9 @@ async function showAllProducts(){
     return product
 }
 
-// async function showCartProducts(userId){
+// async function addCartProducts(productId){
 //     const product=await Products.findAll({
-//         include:[{model:User,
-//         where:{id:userId}}]
-//     })
+//         where:{id:productId}})
 //     return product
 // }
 
@@ -49,7 +48,7 @@ async function showProductByName(name){
 module.exports={
     createNewProduct,
     showAllProducts,
-    //showCartProducts,
+   // showCartProducts,
     showProductByName
 }
 
@@ -71,7 +70,7 @@ module.exports={
     //     'Much better then iphone'
     // )
 
-//     const products=await showProductByName('Google')
+//     const products=await showCartProducts('2')
 //     for(let p of products){
 //         //console.log(`${p.proName}`)
 //         console.log(`id:${p.id}\nNAme: ${p.prodName}\n Manuf.${p.manufacturer}:\n Price: ${p.price}\n `)

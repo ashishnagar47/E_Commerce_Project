@@ -9,9 +9,12 @@ app.use(express.urlencoded({extended:true}))
 
 const {userRoute}=require('./src/routes/user')
 const{prodRoute}=require('./src/routes/products')
+const {cartRoute}=require('./src/routes/cart')
 
 
 app.use('/api/users',userRoute)
+app.use('/imagesCart',express.static(__dirname+'/imagesCart'))
+app.use('/api/cart',cartRoute)
 app.use('/images',express.static(__dirname+'/images'))
 app.use('/api/products',prodRoute)
 

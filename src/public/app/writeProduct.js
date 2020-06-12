@@ -7,7 +7,7 @@ function writeProduct(){
 //          const description=$("#description").val()
 //          const picture=$("#picture")[0].files[0]
 //          console.log(picture)
-//          $.post('/',{prodName,manufacturer,price,description,picture})
+//          $.post('/api/products',{prodName,manufacturer,price,description,picture})
 //          $("#contents").load('/components/allProducts.html')
 //     })
 //  })
