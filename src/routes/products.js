@@ -25,7 +25,7 @@ route.post('/',upload.single('picture'),async(req,res)=>{
         console.log(newPath)
         await fs.rename(oldPath,newPath)
 
-        const{prodName,manufacturer,price,description}=req.body
+        const{prodName,manufacturer,shopName,category,price,description}=req.body
         const picture='/images/'+'ProductPic_'+req.body.prodName+'.'+req.file.mimetype.split('/').pop()
        // const picture=newPath
         if((!prodName)||(!manufacturer)){
@@ -33,7 +33,7 @@ route.post('/',upload.single('picture'),async(req,res)=>{
                 error:"Need productName, manufacturer to create a product "
             })
         }
-        const product=await createNewProduct(prodName,manufacturer,price,description,picture)
+        const product=await createNewProduct(prodName,manufacturer,shopName,category,price,description,picture)
         try{res.status(200).send(product)}
         catch{(err)=>console.log(err)}
         

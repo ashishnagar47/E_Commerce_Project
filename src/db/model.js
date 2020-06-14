@@ -33,6 +33,8 @@ const Products=db.define('product',{
     id:COL_ID_DEF,
     prodName:COL_NAME_DEF,
     manufacturer:MANUF,
+    shopName:{type:Sequelize.DataTypes.STRING},
+    category:{type:Sequelize.DataTypes.STRING},
     price:{type:Sequelize.DataTypes.FLOAT},
     description:{type:Sequelize.DataTypes.TEXT},
     picture:{type:Sequelize.DataTypes.STRING}
@@ -42,6 +44,7 @@ const CartProducts=db.define('cart',{
     id:COL_ID_DEF,
     cProdName:COL_NAME_DEF,
     manufacturer:MANUF,
+    shopName:{type:Sequelize.DataTypes.STRING},
     price:{type:Sequelize.DataTypes.FLOAT},
     description:{type:Sequelize.DataTypes.TEXT},
     picture:{type:Sequelize.DataTypes.STRING}

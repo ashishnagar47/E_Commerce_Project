@@ -18,6 +18,8 @@ function writeProduct(){
    
    formData.append('prodName',$("#prodName").val())
    formData.append('manufacturer',$('#manufacturer').val())
+   formData.append('shopName',$('#shopName').val())
+   formData.append('category',$('#category').val())
    formData.append('price',$('#price').val())
    formData.append('description',$('#description').val())
    formData.append('picture',$('#picture')[0].files[0])

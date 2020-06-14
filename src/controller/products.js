@@ -3,10 +3,12 @@ const { Op } = require("sequelize");
 const {Products}=require('../db/model')
 const{CartProducts}=require('../db/model')
 
-async function createNewProduct(prodName,manufacturer,price,description,picture){
+async function createNewProduct(prodName,manufacturer,shopName,category,price,description,picture){
     const product=await Products.create({
         prodName,
         manufacturer,
+        shopName,
+        category,
         price,
         description,
         picture
@@ -31,7 +33,8 @@ async function showProductByName(name){
     const product=await Products.findAll({
         where:{[Op.or]:[
             {prodName:name},
-        {manufacturer:name}]
+        {manufacturer:name},
+        {category:name}]
         }
     })
     return product
