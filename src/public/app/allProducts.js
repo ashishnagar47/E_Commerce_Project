@@ -14,11 +14,12 @@ function loadProducts(){
                             <h5 class="card-title" id="Manufacturer">Manufacturer : ${p.manufacturer}</h5>
                             <h5 class="card-title" id="Price">Rs: ${p.price }</h5>
                             <p class="card-text" id="Description">${p.description}</p>
-                            <a href="components/addCartProduct.html?productId=${p.id}&prodName=${p.prodName}&manufacturer=${p.manufacturer}&price=${p.price}&image=${p.picture}&description=${p.description}" class="btn btn-primary" id="shoppingCart" onclick="addCardProduct()"  >Add to Cart</a>
+                            <a href="components/shoppingCart.html?productId=${p.id}&prodName=${p.prodName}&manufacturer=${p.manufacturer}&price=${p.price}&image=${p.picture}&description=${p.description}" class="btn btn-primary" id="shoppingCart" onclick="addCardProduct()"  >Add to Cart</a>
                             <a href="#" class="btn btn-primary col-mx-8">Buy Now</a>
                             <!--<p class="card-text mx-6"><small class="text-muted">Last updated 3 mins ago</small></p>-->
                         </div>
                         </div>
+                        
                     </div>
                     </div>
                  `)

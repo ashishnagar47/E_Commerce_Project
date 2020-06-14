@@ -1,0 +1,53 @@
+<script src="https://code.jquery.com/jquery-3.4.1.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@coding-blocks/bootstrap@4.5.2/dist/css/bootstrap.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@coding-blocks/bootstrap@4.5.2/dist/js/bootstrap.js" crossorigin="anonymous"></script>
+
+
+
+
+<div class="container my-2 ">
+    <h1 class="h1 text-center"> Searched PRODUCTS</h1>
+    <div class="row m-2" id="product-container">
+        <script>
+        $(()=>{
+            const params = new URLSearchParams(document.location.search);
+            const search=params.get("search")
+            console.log(search)
+        $.get(`/api/products/${search}`,(products)=>{
+            for(let p of products){
+                $('#product-container').append(
+                    $(`
+                        <div class="card m-4" style="max-width: 1240px;">
+                        <div class="row no-gutters">
+                            <div class="col-md-3">
+                            <img src="${p.picture}" class="card-img" id="picture" style="height:20rem; width:10rem" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                            <div class="card-body mx-22">
+                                <h5 class="card-title text-center" id="productName">${p.prodName}</h5>
+                                <h5 class="card-title" id="Manufacturer">Manufacturer : ${p.manufacturer}</h5>
+                                <h5 class="card-title" id="Price">Rs: ${p.price }</h5>
+                                <p class="card-text" id="Description">${p.description}</p>
+                                <a href="components/shoppingCart.html?productId=${p.id}&prodName=${p.prodName}&manufacturer=${p.manufacturer}&price=${p.price}&image=${p.picture}&description=${p.description}" class="btn btn-primary" id="shoppingCart" onclick="addCardProduct()"  >Add to Cart</a>
+                                <a href="#" class="btn btn-primary col-mx-8">Buy Now</a>
+                                <!--<p class="card-text mx-6"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+                            </div>
+                            </div>
+                            
+                        </div>
+                        </div>
+                     `)
+                 )
+               
+            }
+        })
+        })
+    
+        </script>
+    </div>
+
+</div>
+
+<!-- <script src="/app/searchedProducts.js"></script>
+<script>loadProducts()</script> -->

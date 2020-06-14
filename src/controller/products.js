@@ -70,7 +70,7 @@ module.exports={
     //     'Much better then iphone'
     // )
 
-//     const products=await showCartProducts('2')
+//     const products=await showProductByName('Apple')
 //     for(let p of products){
 //         //console.log(`${p.proName}`)
 //         console.log(`id:${p.id}\nNAme: ${p.prodName}\n Manuf.${p.manufacturer}:\n Price: ${p.price}\n `)
