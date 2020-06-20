@@ -1,18 +1,24 @@
 const express=require('express')
+const session=require('express-session')
 
 const {db}=require('./src/db/model')
 const app=express()
 
-
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
+
+app.use(session({
+    resave: true,
+    saveUninitialized: true,
+    secret: '24knb6k247b2k7b2k7bk247hb2kh7b2',
+  }))
 
 const {userRoute}=require('./src/routes/user')
 const{prodRoute}=require('./src/routes/products')
 const {cartRoute}=require('./src/routes/cart')
 
 
-app.use('/api/users',userRoute)
+app.use('/components/api/users',userRoute)
 app.use('/imagesCart',express.static(__dirname+'/imagesCart'))
 app.use('/api/cart',cartRoute)
 app.use('/images',express.static(__dirname+'/images'))
@@ -21,7 +27,7 @@ app.use('/api/products',prodRoute)
 app.use('/',express.static(__dirname+'/src/public'))
 
 
-db.sync({force:true})
+db.sync()
     .then(()=>{
         app.listen(4444,()=>{
             console.log('server started on http://localhost:4444');

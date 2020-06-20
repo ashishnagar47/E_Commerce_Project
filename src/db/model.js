@@ -26,7 +26,10 @@ const MANUF={
 
 const User=db.define('user',{
     id:COL_ID_DEF,
-    username:COL_NAME_DEF
+    username:COL_NAME_DEF,
+    email:{type:Sequelize.DataTypes.STRING,
+    unique:true},
+    password:{type:Sequelize.DataTypes.STRING}
 })
 
 const Products=db.define('product',{
