@@ -1,19 +1,18 @@
-const{CartProducts}=require('../db/model')
+const{CartProducts,User}=require('../db/model')
 
-async function addNewProduct(cProdName,manufacturer,price,description,picture){
+async function addNewProduct(cProdName,manufacturer,shopName,price){
     const cart=await CartProducts.create({
         cProdName,
         manufacturer,
-        price,
-        description,
-        picture
+        shopName,
+        price
+        
     })
     return cart
 }
 
 async function showAllProducts(){
     const cart=await CartProducts.findAll({
-    
     })
     return cart
 }

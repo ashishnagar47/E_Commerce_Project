@@ -12,13 +12,14 @@ const{
 
 route.post('/',async(req,res)=>{
         console.log('req.body',req.body)
-        const{cProdName,manufacturer,price,description}=req.body
+        const{cProdName,manufacturer,shopName,price,picture}=req.body
         if((!cProdName)||(!manufacturer)){
             res.status(400).send({
                 error:"Need productName, manufacturer to create a product "
             })
         }
-        const product=await addNewProduct(cProdName,manufacturer,price,description)
+        
+        const product=await addNewProduct(cProdName,manufacturer,shopName,price)
         console.log(product)
         try{res.redirect('/components/shoppingCart.html')}
         catch{(err)=>console.log(err)}
