@@ -1,5 +1,6 @@
 const {Router}=require('express')
 const route=Router()
+const{CartProducts,User}=require('../db/model')
 // const multer=require('multer')
 // var upload = multer({ dest: 'uploadCart/' })
 // const path=require('path')
@@ -12,6 +13,7 @@ const{
 
 route.post('/',async(req,res)=>{
         console.log('req.body',req.body)
+        const userId=req.session.userId
         const{cProdName,manufacturer,shopName,price,picture}=req.body
         if((!cProdName)||(!manufacturer)){
             res.status(400).send({
@@ -19,16 +21,26 @@ route.post('/',async(req,res)=>{
             })
         }
         
-        const product=await addNewProduct(cProdName,manufacturer,shopName,price)
-        console.log(product)
+        const product=await addNewProduct(userId,cProdName,manufacturer,shopName,price,picture)
+        console.log(product[0])
         try{res.redirect('/components/shoppingCart.html')}
         catch{(err)=>console.log(err)}
         
 })
 
 route.get('/',async(req,res)=>{
-    const product=await showAllProducts()
-    try{res.status(200).send(product)}
+    const cart=await showAllProducts(req.session.userId)
+    //const product=await showAllProducts(req.session.userId)
+    // console.log(req.session.userId)
+    // const user=req.session.userId;
+    //     const cart=await CartProducts.findAll({
+    //         include:{model:User,
+    //         where:{id:user}
+    //     }}).catch((err)=>{
+    //         console.log("CartProduct"+ err)
+    //     })
+    //     console.log(cart)
+    try{res.status(200).send(cart)}
     catch{(err)=>console.log(err)}
 })
 

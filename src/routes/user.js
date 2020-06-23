@@ -4,6 +4,7 @@ const {User}=require('../db/model')
 
 const {
     createUser,
+    findAllUser,
     findUserById,
     findUserByName
 }=require('../controller/user')
@@ -40,25 +41,55 @@ route.post('/signup', async (req, res) => {
       return res.status(401).render('login', { error: 'Incorrect password' })
     }
     req.session.userId = user.id
-     res.redirect('../../#')  
+     res.redirect(`/components/Authentication/profile.html?user=${user.username}`)  
   })
   
   route.get('/logout', (req, res) => {
     req.session.userId = null
-    res.redirect('/login')
+    res.redirect('../../components/Authentication/login.html')
   })
 
-route.get(':/id',async(req,res)=>{
-    const user=findUserById(req.params.id)
-    try{res.status(200).send(user)}
-    catch{(err)=>console.log(err)}
-})
+  
 
-route.get(':/username',async(req,res)=>{
-    const user=findUserByName(req.params.username)
-    try{res.status(200).send(user)}
-    catch{(err)=>console.log(err)}
-})
+  // route.get('/', function(req, res) {
+  //   var old = req.session.name;
+  //   req.session.name = req.param('name');
+  //   var name = req.param('name');
+  //   var n=req.session.name 
+  
+  //  // res.header('Content-Type', 'text/plain');
+  //   res.send("Email was '" + old + n+"', now is '" + req.session.username + name+ "'." +req.session.userId);
+  // });
+
+  route.get('../../components/Authentication/profile', async (req, res) => {
+    if (!req.session.userId) {
+      return res.redirect('/login.html')
+    }
+    const user = await User.findByPk(req.session.userId)
+    console.log(user.id+"bkdskjbjdb")
+    return user;
+    //res.render('../public/components/Authentication/profile.html', $(`user`))
+  })
+  
+
+// route.get('/',async(req,res)=>{
+//   const user=req.session.user
+//     try{res.status(200).send(user)}
+//     catch{(err)=>console.log(err)}
+    
+// })
+
+// route.get('/:id',async(req,res)=>{
+//     const user=User.findOne({where:{id:req.params.id}})
+//     try{res.status(200).send(user)}
+//     catch{(err)=>console.log(err)}
+// })
+
+// route.get('/:username',async(req,res)=>{
+//     const user=findUserByName(req.params.username)
+//     try{res.status(200).send(user)}
+//     catch{(err)=>console.log(err)}
+// })
 
 module.exports={
     userRoute:route

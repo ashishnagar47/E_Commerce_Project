@@ -1,44 +1,37 @@
 const{CartProducts,User}=require('../db/model')
 
-async function addNewProduct(cProdName,manufacturer,shopName,price){
+async function addNewProduct(userId,cProdName,manufacturer,shopName,price,picture){
     const cart=await CartProducts.create({
+        userId,
         cProdName,
         manufacturer,
         shopName,
-        price
+        price,
+        picture
         
     })
     return cart
 }
 
-async function showAllProducts(){
+async function showAllProducts(id){
+    console.log(id)
     const cart=await CartProducts.findAll({
+        include:{model:User,
+        where:{id:id}
+    }}).catch((err)=>{
+        console.log("CartProduct"+ err)
     })
     return cart
 }
 
-async function showCartProducts(productId){
+async function showCartProducts(id){
     const cart=await CartProducts.findAll({
-        where:{id:productId}})
+        include:{model:User},
+        where:{id:id}})
     return cart
 }
 
-// async function showProductByName(name){
-//     const product=await Products.findAll({
-//         where:{[Op.or]:[
-//             {prodName:name},
-//         {manufacturer:name}]
-//         }
-//     })
-//     return product
-// }
 
-// async function showProductByName(prodName){
-//     const product=await Products.findAll({
-//         where:{prodName}
-//     })
-//     product
-// }
 
 
 module.exports={
@@ -46,3 +39,33 @@ module.exports={
     showAllProducts,
     showCartProducts
 }
+
+
+
+// async function task(){
+//     await addNewProduct(
+        
+//         'Iphone',
+//         "Apple",
+//         "ladj",
+//         '100000'
+        
+//     )
+
+//     await addNewProduct(
+        
+//         'Pixel',
+//         'Google',
+//         'jdsfj',
+//         '60000',
+        
+//     )
+
+//     const products=await showAllProducts('Apple')
+//     for(let p of products){
+//         //console.log(`${p.proName}`)
+//         console.log(`id:${p.id}\nNAme: ${p.prodName}\n Manuf.${p.manufacturer}:\n Price: ${p.price}\n `)
+//     }
+
+// }task()
+// .catch((err)=>{console.log(err)})

@@ -2,8 +2,13 @@ const {User}=require('../db/model')
 
 async function createUser(username){
     const user=await User.create({
-        username
+        username,email,password
     })
+    return user
+}
+
+async function findAllUser(){
+    const user=await User.findAll()
     return user
 }
 
@@ -20,7 +25,8 @@ async function findUserByName(userName){
 module.exports={
     createUser,
     findUserById,
-    findUserByName
+    findUserByName,
+    findAllUser,
 }
 
 // async function task(){

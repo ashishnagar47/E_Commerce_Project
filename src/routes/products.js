@@ -8,8 +8,8 @@ const fs=require('fs').promises
 const{
     createNewProduct,
     showAllProducts,
-    //showCartProducts,
-    showProductByName
+    showProductByName,
+    showProductById
 }=require('../controller/products')
 
 route.post('/',upload.single('picture'),async(req,res)=>{
@@ -46,11 +46,11 @@ route.get('/',async(req,res)=>{
 })
 
 
-// route.get(':/id',async(req,res)=>{
-//     const product=await showCartProducts(req.params.id)
-//     try{res.status(200).send(product)}
-//     catch{(err=>console.log(err))}
-// })
+route.get('/:id',async(req,res)=>{
+    const product=await showProductById(req.params.id)
+    try{res.status(200).send(product)}
+    catch{(err=>console.log(err))}
+})
 
 route.get('/:name',async(req,res)=>{
     const product=await showProductByName(req.params.name)

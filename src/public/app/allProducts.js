@@ -3,7 +3,7 @@ function loadProducts(){
         for(let p of products){
             $('#product-container').append(
                 $(`
-                    <div class="card  m-4" style="max-width: 2460px;">
+                    <div class="card m-4 ">
                     <div class="row no-gutters">
                     
                         <img src="${p.picture}" class="card-img" id="picture" style="height:20rem; width:10rem" alt="...">
@@ -20,7 +20,7 @@ function loadProducts(){
                             
                             <p class="card-text" id="Description"></p>
                             <br>
-                            <a href="components/addCartProducts.html?prodName=${p.prodName}&manufacturer=${p.manufacturer}&shopName=${p.shopName}&price=${p.price}" class="btn btn-primary mb-2"  style="width:200px" id="shoppingCart"  >Add to Cart</a>
+                            <a  class="btn btn-primary mb-2"  style="width:200px" onclick="addProduct(this)" id="${p.id}" data-comp="${p.id}"   >Add to Cart</a>
                             <br>
                             <a href="#" class="btn btn-secondary col-mx-8" style="width:200px">Buy Now</a>
                             <!--<p class="card-text mx-6"><small class="text-muted">Last updated 3 mins ago</small></p>-->
@@ -32,20 +32,64 @@ function loadProducts(){
                  `)
              )
              
-        } 
-        // $("#shoppingCart").click(function(){
+             
+        }
+
+        
+    })
+}
+
+function addProduct(prod){
+    const p=prod.getAttribute("data-comp")
+    $.get(`/api/products/${p}`,(product)=>{
+        const cProdName=product[0].prodName
+        const manufacturer=product[0].manufacturer
+        const shopName=product[0].shopName
+        const price=product[0].price
+        const picture=product[0].picture
+        console.log(cProdName)
+
+        $.post('api/cart',{
+            cProdName,manufacturer,shopName,price,picture
+        })
+
+    })
+}
+
+
+    // let cartP=$("#cart")
+
+    //     cartP.click((ev)=>{
+    //         console.log("xsabhb")
+    //        // console.log('${$(ev.target).attr("data-comp")}')
+    //         $.get(`/api/products/${$(ev.target).attr('data-comp')}`,(products)=>{
+    //         for(let p of products){
+    //         const cProdName=p.prodName
+    //         const manufacturer=p.manufacturer
+    //         const price=p.price
+    //         const shopName=p.shopName
+    //         const picture=p.picture
+    //         console.log(cProdName)
+    //         $.post('/api/cart',
+    //                 {cProdName,manufacturer,shopName,price,picture}
+    //         )
+    //             }
+    //         })  
+    //     })
+    
+
+
+        // const cID=$(`#${p.id}`)
+
+        // $(cID).click(function(){
         //     const cProdName=p.prodName
         //     const manufacturer=p.manufacturer
         //     const price=p.price
         //     const shopName=p.shopName
         //     const picture=p.picture
         //     console.log(cProdName)
+            
         //     $.post('/api/cart',
         //             {cProdName,manufacturer,shopName,price,picture}
         //     )
         //  })
-        
-    })
-    
-}
-

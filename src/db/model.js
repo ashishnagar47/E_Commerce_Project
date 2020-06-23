@@ -59,9 +59,6 @@ const CartProducts=db.define('cart',{
 User.hasMany(CartProducts)
 CartProducts.belongsTo(User)
 
-// db.sync()
-//     .then(()=>{console.log('database has been synced')})
-//     .catch((err)=>{console.log('err')})
 
 module.exports={
    db, User,Products,CartProducts

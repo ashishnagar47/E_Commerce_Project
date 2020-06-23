@@ -23,11 +23,11 @@ async function showAllProducts(){
     return product
 }
 
-// async function addCartProducts(productId){
-//     const product=await Products.findAll({
-//         where:{id:productId}})
-//     return product
-// }
+async function showProductById(productId){
+    const product=await Products.findAll({
+        where:{id:productId}})
+    return product
+}
 
 async function showProductByName(name){
     const product=await Products.findAll({
@@ -51,7 +51,7 @@ async function showProductByName(name){
 module.exports={
     createNewProduct,
     showAllProducts,
-   // showCartProducts,
+   showProductById,
     showProductByName
 }
 

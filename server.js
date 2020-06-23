@@ -4,8 +4,10 @@ const session=require('express-session')
 const {db}=require('./src/db/model')
 const app=express()
 
+
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
+//app.set('view engine','hbs')
 
 app.use(session({
     resave: true,
@@ -18,14 +20,16 @@ const{prodRoute}=require('./src/routes/products')
 const {cartRoute}=require('./src/routes/cart')
 
 
-app.use('/components/api/users',userRoute)
+app.use('/components/Authentication',userRoute)
 app.use('/imagesCart',express.static(__dirname+'/imagesCart'))
 app.use('/api/cart',cartRoute)
 app.use('/images',express.static(__dirname+'/images'))
 app.use('/api/products',prodRoute)
 
 app.use('/',express.static(__dirname+'/src/public'))
-
+ // app.get('/',(req,res)=>{
+ //     res.render('index')
+// })
 
 db.sync()
     .then(()=>{
