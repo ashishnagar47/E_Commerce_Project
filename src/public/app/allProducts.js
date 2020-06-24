@@ -20,7 +20,7 @@ function loadProducts(){
                             
                             <p class="card-text" id="Description"></p>
                             <br>
-                            <a  class="btn btn-primary mb-2"  style="width:200px" onclick="addProduct(this)" id="${p.id}" data-comp="${p.id}"   >Add to Cart</a>
+                            <a href="#" class="btn btn-primary mb-2"  style="width:200px" onclick="addProduct(this)" id="${p.id}" data-comp="${p.id}"   >Add to Cart</a>
                             <br>
                             <a href="#" class="btn btn-secondary col-mx-8" style="width:200px">Buy Now</a>
                             <!--<p class="card-text mx-6"><small class="text-muted">Last updated 3 mins ago</small></p>-->
@@ -57,39 +57,4 @@ function addProduct(prod){
 }
 
 
-    // let cartP=$("#cart")
-
-    //     cartP.click((ev)=>{
-    //         console.log("xsabhb")
-    //        // console.log('${$(ev.target).attr("data-comp")}')
-    //         $.get(`/api/products/${$(ev.target).attr('data-comp')}`,(products)=>{
-    //         for(let p of products){
-    //         const cProdName=p.prodName
-    //         const manufacturer=p.manufacturer
-    //         const price=p.price
-    //         const shopName=p.shopName
-    //         const picture=p.picture
-    //         console.log(cProdName)
-    //         $.post('/api/cart',
-    //                 {cProdName,manufacturer,shopName,price,picture}
-    //         )
-    //             }
-    //         })  
-    //     })
     
-
-
-        // const cID=$(`#${p.id}`)
-
-        // $(cID).click(function(){
-        //     const cProdName=p.prodName
-        //     const manufacturer=p.manufacturer
-        //     const price=p.price
-        //     const shopName=p.shopName
-        //     const picture=p.picture
-        //     console.log(cProdName)
-            
-        //     $.post('/api/cart',
-        //             {cProdName,manufacturer,shopName,price,picture}
-        //     )
-        //  })

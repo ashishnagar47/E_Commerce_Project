@@ -52,7 +52,7 @@ route.get('/:id',async(req,res)=>{
     catch{(err=>console.log(err))}
 })
 
-route.get('/:name',async(req,res)=>{
+route.get('/name/:name',async(req,res)=>{
     const product=await showProductByName(req.params.name)
     try{res.status(200).send(product)}
     catch{(err)=>console.log(err)}

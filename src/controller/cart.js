@@ -24,10 +24,18 @@ async function showAllProducts(id){
     return cart
 }
 
-async function showCartProducts(id){
-    const cart=await CartProducts.findAll({
+// async function showCartProducts(id){
+//     const cart=await CartProducts.findAll({
+//         include:{model:User},
+//         where:{id:id}})
+//     return cart
+// }
+
+async function deleteCartProduct(id){
+    const cart=await deleteCartProduct.destroy({
         include:{model:User},
-        where:{id:id}})
+        where:{id:id}
+    })
     return cart
 }
 
@@ -37,7 +45,7 @@ async function showCartProducts(id){
 module.exports={
     addNewProduct,
     showAllProducts,
-    showCartProducts
+    deleteCartProduct
 }
 
 

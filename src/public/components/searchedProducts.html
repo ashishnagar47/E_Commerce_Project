@@ -14,11 +14,11 @@
             const params = new URLSearchParams(document.location.search);
             const search=params.get("search")
             console.log(search)
-        $.get(`/api/products/${search}`,(products)=>{
+        $.get(`/api/products/name/${search}`,(products)=>{
             for(let p of products){
                 $('#product-container').append(
                     $(`
-                        <div class="card m-4" style="max-width: 1240px;">
+                        <div class="card m-4" style="width: 1040px;">
                         <div class="row no-gutters">
                             <div class="col-md-3">
                             <img src="${p.picture}" class="card-img" id="picture" style="height:20rem; width:10rem" alt="...">
@@ -29,8 +29,8 @@
                                 <h5 class="card-title" id="Manufacturer">Manufacturer : ${p.manufacturer}</h5>
                                 <h5 class="card-title" id="Price">Rs: ${p.price }</h5>
                                 <p class="card-text" id="Description">${p.description}</p>
-                                <a href="components/addCartProducts.html?productId=${p.id}&prodName=${p.prodName}&manufacturer=${p.manufacturer}&price=${p.price}&image=${p.picture}&description=${p.description}" class="btn btn-primary" id="shoppingCart"   >Add to Cart</a>
-                                <a href="#" class="btn btn-primary col-mx-8">Buy Now</a>
+                                <a href="#" class="btn btn-primary mb-2"  style="width:200px" onclick="addProduct(this)" id="${p.id}" data-comp="${p.id}"   >Add to Cart</a>
+                                <a href="#" class="btn btn-primary mb-2" style="width:200px">Buy Now</a>
                                 <!--<p class="card-text mx-6"><small class="text-muted">Last updated 3 mins ago</small></p>-->
                             </div>
                             </div>
@@ -49,5 +49,21 @@
 
 </div>
 
-<!-- <script src="/app/searchedProducts.js"></script>
-<script>loadProducts()</script> -->
+<script>
+function addProduct(prod){
+    const p=prod.getAttribute("data-comp")
+    $.get(`../api/products/${p}`,(product)=>{
+        const cProdName=product[0].prodName
+        const manufacturer=product[0].manufacturer
+        const shopName=product[0].shopName
+        const price=product[0].price
+        const picture=product[0].picture
+        console.log(cProdName)
+
+        $.post('../api/cart',{
+            cProdName,manufacturer,shopName,price,picture
+        })
+
+    })
+}
+</script>
