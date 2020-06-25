@@ -1,3 +1,8 @@
+// jQuery(window).load(function() {
+//     sessionStorage.setItem('status','loggedIn') 
+//    });
+
+
 function writeUser(){
     const params = new URLSearchParams(document.location.search);
     const user=params.get("user")

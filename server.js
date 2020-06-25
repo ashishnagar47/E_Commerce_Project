@@ -31,7 +31,7 @@ app.use('/',express.static(__dirname+'/src/public'))
  //     res.render('index')
 // })
 
-db.sync()
+db.sync({force:true})
     .then(()=>{
         app.listen(4444,()=>{
             console.log('server started on http://localhost:4444');

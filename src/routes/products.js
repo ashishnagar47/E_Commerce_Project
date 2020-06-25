@@ -9,7 +9,8 @@ const{
     createNewProduct,
     showAllProducts,
     showProductByName,
-    showProductById
+    showProductById,
+    showSelectedProduct
 }=require('../controller/products')
 
 route.post('/',upload.single('picture'),async(req,res)=>{
@@ -51,6 +52,43 @@ route.get('/:id',async(req,res)=>{
     try{res.status(200).send(product)}
     catch{(err=>console.log(err))}
 })
+
+route.get('/find/Electronics',async(req,res)=>{
+    const product=await showSelectedProduct('Electronics')
+    try{res.status(200).send(product)}
+    catch{(err=>console.log(err))}
+})
+
+route.get('/find/TV&Appliances',async(req,res)=>{
+    const product=await showSelectedProduct('TV&Appliances')
+    try{res.status(200).send(product)}
+    catch{(err=>console.log(err))}
+})
+
+route.get('/find/Home&Furniture',async(req,res)=>{
+    const product=await showSelectedProduct('Home&Furniture')
+    try{res.status(200).send(product)}
+    catch{(err=>console.log(err))}
+})
+
+route.get('/find/Sports,Books&More',async(req,res)=>{
+    const product=await showSelectedProduct('Sports,Books&More')
+    try{res.status(200).send(product)}
+    catch{(err=>console.log(err))}
+})
+
+route.get('/find/Kids',async(req,res)=>{
+    const product=await showSelectedProduct('Kids')
+    try{res.status(200).send(product)}
+    catch{(err=>console.log(err))}
+})
+
+route.get('/find/Grocery',async(req,res)=>{
+    const product=await showSelectedProduct('Grocery')
+    try{res.status(200).send(product)}
+    catch{(err=>console.log(err))}
+})
+
 
 route.get('/name/:name',async(req,res)=>{
     const product=await showProductByName(req.params.name)

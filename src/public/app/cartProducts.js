@@ -1,6 +1,9 @@
 
 
+
+
 function deleteProduct(prod){
+
     const p=prod.getAttribute("data-component")
 
     $.ajax({
@@ -15,11 +18,15 @@ function deleteProduct(prod){
 }
 
 
-let total_price, count,delivery_charge;
+//let total_price, count,delivery_charge;
 
 function cartProducts(){
-    total_price=0,count=0;
+    
+
+
+    let total_price=0,count=0;
     $.get(`/api/cart`,(cartProducts)=>{
+        
         for(let p of cartProducts){
             var price=p.price
             var pr=price.replace(",","");
@@ -64,8 +71,11 @@ function cartProducts(){
         else if(total_price<1000 & total_price>500){
             delivery_charge=50;
         }
-        else{
+        else if(total_price<500 & count>0){
             delivery_charge=100;
+        }
+        else{
+            delivery_charge=0;
         }
         var totalPrice=total_price+delivery_charge;
 

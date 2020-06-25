@@ -40,6 +40,18 @@ async function showProductByName(name){
     return product
 }
 
+async function showSelectedProduct(name){
+    const product=await Products.findAll({
+        where:{[Op.or]:[
+            
+        {category:name}]
+        }
+    })
+    return product
+}
+
+
+
 // async function showProductByName(prodName){
 //     const product=await Products.findAll({
 //         where:{prodName}
@@ -52,7 +64,8 @@ module.exports={
     createNewProduct,
     showAllProducts,
    showProductById,
-    showProductByName
+    showProductByName,
+    showSelectedProduct
 }
 
 //async function task(){
