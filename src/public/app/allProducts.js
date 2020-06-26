@@ -27,7 +27,7 @@ function loadProducts(){
                             <br>
                             <a href="#" class="btn btn-secondary mx-4 mb-2 justify-content-center"  style="width:150px">Buy Now</a>
                             <br>
-                            <!-- <a href="#" class="btn btn-secondary mx-4 mb-2" onclick="deleteProduct(this)" data-component="${p.id}" style="width:150px">Remove</a> -->
+                             <a href="#" class="btn btn-secondary mx-4 mb-2" onclick="deleteProduct(this)" data-component="${p.id}" style="width:150px">Remove</a> 
                             
                         </div>
                         </div>
