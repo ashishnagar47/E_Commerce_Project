@@ -1,11 +1,27 @@
 const Sequelize=require ('sequelize')
 
-const db=new Sequelize({
-    dialect:'mysql',
-    database:'eCommerceSite',
-    username:'eCommerceProjectUser',
-    password:'eCommerceProjectPass'
-})
+let db;
+if(process.env.DATABASE_URL){
+    db=new Sequelize(process.env.DATABASE_URL)
+}
+else{
+     db=new Sequelize({
+        dialect:'mysql',
+        database:'eCommerceSite',
+        username:'eCommerceProjectUser',
+        password:'eCommerceProjectPass'
+    })
+
+}
+// const db=new Sequelize({
+//     dialect:'postgres',
+//     database:'d9cs3ua9j704t',
+//     username:'lgdkouafhhrtwz',
+//     password:'5d0a125faecb0f64157144667b54cdcea83d626dcb7ca0e80dbc8cb7082526aa',
+//     host:'ec2-35-172-73-125.compute-1.amazonaws.com'
+// })
+
+
 
 const COL_ID_DEF={
     type:Sequelize.DataTypes.INTEGER,
