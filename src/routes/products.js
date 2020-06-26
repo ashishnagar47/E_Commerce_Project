@@ -1,5 +1,6 @@
 const {Router}=require('express')
 const route=Router()
+const {Products}=require('../db/model')
 const multer=require('multer')
 var upload = multer({ dest: 'uploads/' })
 const path=require('path')
@@ -94,6 +95,20 @@ route.get('/name/:name',async(req,res)=>{
     const product=await showProductByName(req.params.name)
     try{res.status(200).send(product)}
     catch{(err)=>console.log(err)}
+})
+
+
+route.delete('/:id',async(req,res)=>{
+    let id=req.params.id;
+    Products.findByPk(id)
+    .then((product)=>{
+        return product.destroy();
+    })
+
+    //const cart=await deleteCartProduct(id)
+
+    try{res.status(200).send(cart)}
+    catch{(err=>console.log(err))}
 })
 
 module.exports={

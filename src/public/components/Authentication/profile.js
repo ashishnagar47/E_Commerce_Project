@@ -1,6 +1,6 @@
-// jQuery(window).load(function() {
-//     sessionStorage.setItem('status','loggedIn') 
-//    });
+$(window).on('load',function() {
+    sessionStorage.setItem('status','loggedIn') 
+   });
 
 
 function writeUser(){

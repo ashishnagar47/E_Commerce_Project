@@ -3,11 +3,11 @@ const session=require('express-session')
 
 const {db}=require('./src/db/model')
 const app=express()
-
+const PORT=process.env.PORT || 4444
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
-//app.set('view engine','hbs')
+
 
 app.use(session({
     resave: true,
@@ -18,6 +18,7 @@ app.use(session({
 const {userRoute}=require('./src/routes/user')
 const{prodRoute}=require('./src/routes/products')
 const {cartRoute}=require('./src/routes/cart')
+const {paymentRoute}=require('./src/routes/payment')
 
 
 app.use('/components/Authentication',userRoute)
@@ -26,15 +27,15 @@ app.use('/api/cart',cartRoute)
 app.use('/images',express.static(__dirname+'/images'))
 app.use('/api/products',prodRoute)
 
-app.use('/',express.static(__dirname+'/src/public'))
- // app.get('/',(req,res)=>{
- //     res.render('index')
-// })
+app.use('/api/payment',paymentRoute)
 
-db.sync({force:true})
+app.use('/',express.static(__dirname+'/src/public'))
+ 
+
+db.sync()
     .then(()=>{
-        app.listen(4444,()=>{
-            console.log('server started on http://localhost:4444');
+        app.listen(PORT,()=>{
+            console.log(`server started on http://localhost:${PORT}`);
         })
     })
     .catch((err)=>{

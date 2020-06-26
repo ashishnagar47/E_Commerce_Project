@@ -4,6 +4,18 @@
     <script src="https://cdn.jsdelivr.net/npm/@coding-blocks/bootstrap@4.5.2/dist/js/bootstrap.js" crossorigin="anonymous"></script>
   
     
+    <script src="/components/Authentication/profile.js"></script>
+    <script>
+        if (sessionStorage.getItem('status') != null){
+            //redirect to page
+            console.log('hii')
+            //alert("Is Login : True");
+            }
+            else{
+            //show validation message
+            alert("Please Login First to access this page");
+            }
+    </script>
 
 
 <div class="container my-2 ">
@@ -42,3 +54,4 @@
 </div>
 <script src="/app/cartProducts.js"></script>
 <script>cartProducts()</script>
+

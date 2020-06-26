@@ -48,7 +48,7 @@ function cartProducts(){
                         
                         <h5 class="card-title" id="Seller">Seller: ${p.shopName}</h5>
                         
-                        <h5 class="card-title" id="Price">Rs: ${p.price }</h5>
+                        <h5 class="card-title" id="Price">₹ ${p.price }</h5>
                         
                         <p class="card-text" id="Description"></p>
                         <br>
@@ -92,10 +92,10 @@ function cartProducts(){
         
             <h5>Total Item : ${count}</h5>
 
-            <h5>Delivery Charge:  Rs ${delivery_charge}</h5>
+            <h5>Delivery Charge:  ₹ ${delivery_charge}</h5>
             _____________________________________
 
-            <h5 class="card-text">Total Price: Rs ${p}</h5>
+            <h5 class="card-text">Total Price: ₹ ${p}</h5>
             
 
             <button class="btn btn-primary m-4" style="width:150px" type="submit" id="submit">Buy Now</button>
