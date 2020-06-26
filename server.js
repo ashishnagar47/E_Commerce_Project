@@ -27,7 +27,7 @@ app.use('/api/cart',cartRoute)
 app.use('/images',express.static(__dirname+'/images'))
 app.use('/api/products',prodRoute)
 
-app.use('/api/payment',paymentRoute)
+//app.use('/api/payment',paymentRoute)
 
 app.use('/',express.static(__dirname+'/src/public'))
  
