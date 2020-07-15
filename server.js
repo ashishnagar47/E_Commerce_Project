@@ -18,7 +18,7 @@ app.use(session({
 const {userRoute}=require('./src/routes/user')
 const{prodRoute}=require('./src/routes/products')
 const {cartRoute}=require('./src/routes/cart')
-const {paymentRoute}=require('./src/routes/payment')
+//const {paymentRoute}=require('./src/routes/paytmGateway')
 
 
 app.use('/components/Authentication',userRoute)

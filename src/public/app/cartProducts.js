@@ -35,7 +35,7 @@ function cartProducts(){
             count+=1;
              $('#product-container').append(
                  $(`
-                <div class="card m-3 " style="width:700px" style="max-width: 540px;">
+                <div class="card m-3 " >
 
                 <div class="row no-gutters">
                     
@@ -86,19 +86,19 @@ function cartProducts(){
 
         $('#product-contain').append(
         $(`
-        <div class="card bg-light mb-3 sticky-top" style="max-width: 28rem; z-index:1">
+        <div class="card bg-light mb-3"  z-index:-5">
         <div class="card-header h3">Price</div>
         <div class="card-body">
         
             <h5>Total Item : ${count}</h5>
 
-            <h5>Delivery Charge:  ₹ ${delivery_charge}</h5>
-            _____________________________________
+            <h5>Delivery Charges:  ₹ ${delivery_charge}</h5>
+            _________________________________
 
             <h5 class="card-text">Total Price: ₹ ${p}</h5>
             
 
-            <button class="btn btn-primary m-4" style="width:150px" type="submit" id="submit">Buy Now</button>
+            <a class="btn btn-primary m-4" style="width:150px" href="/api/payment" type="submit" id="submit">Buy Now</a>
         </div>
         </div>
         `)

@@ -9,7 +9,7 @@ function writeUser(){
     $("#product-container").append(`
     
 
-    <div class="card bg-light m-4" style="max-width: 60rem; height:30rem">
+    <div class="card bg-light m-4" style="max-width: 60rem;">
         <div class="card-header h1">Profile Page</div>
         <div class="card-body justify-content-center">
             <h5 class="card-title">Hello ${user}  </h5>
@@ -24,7 +24,7 @@ function writeUser(){
             wee hours of the morning. This e-commerce never shuts down.</p>
             <div class="justify-content-center">
             <a href="../../components/Authentication/logout" class="btn btn-primary col-mx-8 justify-content-around">Logout</a>
-            <a href="../../../../#" class="btn btn-secondary col-mx-8 justify-content-around">Return</a> 
+            <a href="../../../../#" class="btn btn-secondary col-mx-8 float-right">Return to Site</a> 
             </div>
             </div>
         </div>
