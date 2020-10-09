@@ -25,7 +25,7 @@ route.post('/signup', async (req, res) => {
     
       username: req.body.username,
       email: req.body.email,
-      password: req.body.password, // NOTE: in production we save hash of password
+      password: req.body.password, 
     })
     try{
       res.redirect(`/components/Authentication/login.html`)}

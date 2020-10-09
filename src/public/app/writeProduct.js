@@ -1,17 +1,6 @@
 function writeProduct(){
    $(()=>{
       $("#submit").click(()=>{
-//          const prodName=$("#prodName").val()
-//          const manufacturer=$("#manufacturer").val()
-//          const price=$("#price").val()
-//          const description=$("#description").val()
-//          const picture=$("#picture")[0].files[0]
-//          console.log(picture)
-//          $.post('/api/products',{prodName,manufacturer,price,description,picture})
-//          $("#contents").load('/components/allProducts.html')
-//     })
-//  })
-// }
 
     const formData=new FormData()
     //const filefield=document.querySelector('input[type="file"]');
@@ -38,11 +27,6 @@ function writeProduct(){
       });
 
 
-    
-
-//    // //  $.post('/api/products',formData)
-//    // //  $('#contents').load('/components/allProduct.html') 
-//    // })
  })
    })
 }
